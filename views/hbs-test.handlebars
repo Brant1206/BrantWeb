@@ -1,0 +1,27 @@
+<ul>
+    {{#each data.tours}}
+        {{! 測試區塊內容}}
+        <li>
+            {{name}} - {{price}}
+            {{#if ../data.currencies}}
+                ({{../data.currency.abbrev}})
+            {{/if}}
+        </li>
+    {{/each}}
+</ul>
+{{#unless data.currencies}}
+    {{! 變數不存在才執行}}
+    <p>All prices in {{data.currency.name}}.</p>
+{{/unless}}
+{{#if data.specialUrl}}
+    <p>Check out our <a href="{{data.specialUrl}}">specials!</a></p>
+{{else}}    
+    <p>Please check back often for specials.</p>
+{{/if}}
+<p>
+    {{#each data.currencies1}}
+        <a href="#" class="currency">{{.}}</a>
+    {{else}}
+        Unfortunately, we currently only accept {{currency.name}}.
+    {{/each}}
+</p>
